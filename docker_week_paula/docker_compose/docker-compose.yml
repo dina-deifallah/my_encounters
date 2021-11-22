@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ludtdaten_collector:
+    build: luftdaten/
+    volumes:
+    - ./luftdaten/:/code
+    depends_on:
+    - mypg
+  mypg:
+    image: postgres
+    ports:
+    - 5555:5432
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=1234
